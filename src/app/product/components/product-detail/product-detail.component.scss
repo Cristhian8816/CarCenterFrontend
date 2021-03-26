@@ -1,0 +1,12 @@
+.crop-image {
+  display: block;
+  height: 600px;
+  width: 100%;
+  padding-top: 10px;
+  img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    object-position: center;
+  }
+}

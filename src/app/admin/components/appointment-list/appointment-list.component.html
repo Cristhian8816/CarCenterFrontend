@@ -1,0 +1,27 @@
+<table mat-table [dataSource]="appointments" class="mat-elevation-z8 appointments-table" >
+  <!-- Position Column -->
+  <ng-container matColumnDef="AppointmentId">
+    <th mat-header-cell *matHeaderCellDef> AppointmentId </th>
+    <td mat-cell *matCellDef="let appointment"> {{appointment.AppointmentId}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PatientId">
+    <th mat-header-cell *matHeaderCellDef> PatientId </th>
+    <td mat-cell *matCellDef="let appointment"> {{appointment.PatientId}} </td>
+  </ng-container>
+  <ng-container matColumnDef="AppointmentType">
+    <th mat-header-cell *matHeaderCellDef> AppointmentType </th>
+    <td mat-cell *matCellDef="let appointment"> {{appointment.AppointmentType}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let appointment"> {{appointment.Date | date}} </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let appointment">         
+        <button mat-raised-button color="warn" [disabled]="isDisabled[appointment.AppointmentId - 1]" (click)="deleteAppointment(appointment.AppointmentId)">Cancel Appointment</button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
