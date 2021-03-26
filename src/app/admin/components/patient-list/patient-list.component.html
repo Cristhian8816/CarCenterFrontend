@@ -1,25 +1,37 @@
-<table mat-table [dataSource]="products" class="mat-elevation-z8 products-table" >
+<table mat-table [dataSource]="clients" class="mat-elevation-z8 products-table" >
   <!-- Position Column -->
-  <ng-container matColumnDef="Patientid">
-    <th mat-header-cell *matHeaderCellDef> Patientid </th>
-    <td mat-cell *matCellDef="let product"> {{product.PatientId}} </td>
+  <ng-container matColumnDef="Clients_key">
+    <th mat-header-cell *matHeaderCellDef> Cliente ID </th>
+    <td mat-cell *matCellDef="let client"> {{client.Clients_key}} </td>
   </ng-container>
-  <ng-container matColumnDef="Name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let product"> {{product.Name}} </td>
+  <ng-container matColumnDef="FullName">
+    <th mat-header-cell *matHeaderCellDef> Full Name </th>
+    <td mat-cell *matCellDef="let client"> {{client.FullName}} </td>
   </ng-container>
-  <ng-container matColumnDef="Phone NUmber">
-    <th mat-header-cell *matHeaderCellDef> Phone NUmber </th>
-    <td mat-cell *matCellDef="let product"> {{product.PhoneNumber}} </td>
+  <ng-container matColumnDef="DocumentType">
+    <th mat-header-cell *matHeaderCellDef> Cliente ID </th>
+    <td mat-cell *matCellDef="let client"> {{client.DocumentType}} </td>
+  </ng-container>
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef> Cliente ID </th>
+    <td mat-cell *matCellDef="let client"> {{client.ID}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Cellphone">
+    <th mat-header-cell *matHeaderCellDef> Cliente ID </th>
+    <td mat-cell *matCellDef="let client"> {{client.Cellphone}} </td>
   </ng-container>
   <ng-container matColumnDef="Address">
-    <th mat-header-cell *matHeaderCellDef> Address </th>
-    <td mat-cell *matCellDef="let product"> {{product.Address}} </td>
+    <th mat-header-cell *matHeaderCellDef> Cliente ID </th>
+    <td mat-cell *matCellDef="let client"> {{client.Address}} </td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Cliente ID </th>
+    <td mat-cell *matCellDef="let client"> {{client.email}} </td>
   </ng-container>
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
-    <td mat-cell *matCellDef="let product">        
-        <button mat-raised-button color="warn" (click)="deletepatient(product.id)">Eliminar</button>
+    <td mat-cell *matCellDef="let client">        
+        <button mat-raised-button color="warn" (click)="deletepatient(client.id)">Eliminar</button>
     </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

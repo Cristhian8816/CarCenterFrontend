@@ -1,6 +1,10 @@
 export interface Patient {
-    PatientId: string;
-    Name: string;
+    Clients_key: string;
+    FullName: string;
+    DocumentType: string;
+    ID: string;
+    Cellphone: string;
     Address: string;
-    PhoneNumber: number;
+    email: string;
 }
+

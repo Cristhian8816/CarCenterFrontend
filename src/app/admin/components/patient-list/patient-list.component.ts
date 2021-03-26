@@ -9,8 +9,8 @@ import { PatientsService } from '../../../core/services/patients/patients.servic
 })
 export class PatientListComponent implements OnInit {
 
-  products = [];
-  displayedColumns: string[] = ['Patientid', 'Name', 'Phone NUmber', 'Address', 'actions'];
+  clients = [];
+  displayedColumns: string[] = ['Clients_key','FullName','DocumentType','ID','Cellphone','Address','email', 'actions'];
 
   constructor(
     private patientServices: PatientsService
@@ -21,9 +21,9 @@ export class PatientListComponent implements OnInit {
   }
 
   fetchPatients() {
-    this.patientServices.getAllPatients()
-    .subscribe(products => {
-      this.products = products;
+    this.patientServices.getAllClients()
+    .subscribe(clients => {
+      this.clients = clients;
     });
   }
   deletepatient(id: string) {

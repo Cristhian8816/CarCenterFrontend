@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url_api: 'http://localhost:62471/api',
+  url_api: 'http://localhost:60175/api',
   firebase: {
     apiKey: 'AIzaSyCW0NIz1OL74A3GJ9hD2gQuH_LJ46jr72o',
     authDomain: 'clinicalgap.firebaseapp.com',

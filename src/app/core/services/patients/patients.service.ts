@@ -13,26 +13,26 @@ export class PatientsService {
     private http: HttpClient
   ) { }
 
-  getAllPatients() {
+  getAllClients() {
     // return this.products;
-    return this.http.get<Patient[]>(`${environment.url_api}/patients`);
+    return this.http.get<Patient[]>(`${environment.url_api}/clients`);
   }
 
   getPatient(id: string) {
     // return this.products.find(item => id === item.id);
-    return this.http.get<Patient>(`${environment.url_api}/patients/${id}`);
+    return this.http.get<Patient>(`${environment.url_api}/clients/${id}`);
   }
 
   createpatient( patient: Patient) {
-    return this.http.post(`${environment.url_api}/patients`, patient);
+    return this.http.post(`${environment.url_api}/clients`, patient);
   }
 
   updatePatient( id: string, changes: Partial<Patient>) {
-    return this.http.put(`${environment.url_api}/patients/${id}`, changes);
+    return this.http.put(`${environment.url_api}/clients/${id}`, changes);
   }
 
   deletepatient( id: string) {
-    return this.http.delete(`${environment.url_api}/patients/${id}`);
+    return this.http.delete(`${environment.url_api}/clients/${id}`);
   }
 
 }
