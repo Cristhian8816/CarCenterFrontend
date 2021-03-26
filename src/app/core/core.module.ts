@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PatientsService } from './services/patients/patients.service';
+import { ClientsService } from './services/patients/clients.service';
 import { AppointmentsService } from './services/appointments/appointments.service';
 
 @NgModule({
@@ -10,7 +10,7 @@ import { AppointmentsService } from './services/appointments/appointments.servic
     CommonModule
   ],
   providers: [
-    PatientsService,
+    ClientsService,
     AppointmentsService
   ]
 })

@@ -1,4 +1,4 @@
-export interface Patient {
+export interface Client {
     Clients_key: string;
     FullName: string;
     DocumentType: string;

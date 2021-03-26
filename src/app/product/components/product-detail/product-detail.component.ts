@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 
-import {PatientsService} from '../../../core/services/patients/patients.service';
-import {Patient} from '../../../core/services/models/patient.model';
+import {ClientsService} from '../../../core/services/patients/clients.service';
+import {Client} from '../../../core/services/models/client.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,11 +11,11 @@ import {Patient} from '../../../core/services/models/patient.model';
 })
 export class PatientDetailComponent implements OnInit {
 
-  patient: Patient;
+  patient: Client;
 
   constructor(
     private route: ActivatedRoute,
-    private patientsService: PatientsService
+    private clientsService: ClientsService
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class PatientDetailComponent implements OnInit {
   }
 
   fetchProduct(id: string) {
-    this.patientsService.getPatient(id)
+    this.clientsService.getClient(id)
     .subscribe(patient => {
      this.patient = patient;
     });

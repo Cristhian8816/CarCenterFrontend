@@ -11,7 +11,7 @@ import { Appointment } from '../../../core/services/models/appointment.model';
 
 import { MyValidators  } from '../../../utils/validators';
 
-import { PatientsService } from '../../../core/services/patients/patients.service';
+import { ClientsService } from '../../../core/services/patients/clients.service';
 import { AppointmentsService } from '../../../core/services/appointments/appointments.service';
 import { Observable } from 'rxjs';
 import { IfStmt } from '@angular/compiler';
@@ -37,7 +37,7 @@ export class FormPatientComponent implements OnInit {
   SameDate;
   constructor(
     private formBuilder: FormBuilder,
-    private patientsService: PatientsService,
+    private clientsService: ClientsService,
     private appointmentsService: AppointmentsService,
     private router: Router,
     private storage: AngularFireStorage,
@@ -126,7 +126,7 @@ export class FormPatientComponent implements OnInit {
   }
 
   FecthPatients() {
-    this.patientsService.getAllPatients()
+    this.clientsService.getAllClients()
     .subscribe(patients => {
       this.patientsNames = this.findPatientsName(patients);
     });

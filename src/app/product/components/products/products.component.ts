@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Patient } from '../../../core/services/models/patient.model';
-import { PatientsService } from '../../../core/services/patients/patients.service';
+import { Client } from '../../../core/services/models/client.model';
+import { ClientsService } from '../../../core/services/patients/clients.service';
 
 @Component({
   selector: 'app-products',
@@ -10,9 +10,9 @@ import { PatientsService } from '../../../core/services/patients/patients.servic
 })
 export class PatientsComponent implements OnInit {
 
-   products: Patient[] = [];
+   products: Client[] = [];
   constructor(
-    private patientsService: PatientsService
+    private clientsService: ClientsService
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class PatientsComponent implements OnInit {
   }
 
   fetchProducts() {
-    this.patientsService.getAllPatients()
+    this.clientsService.getAllClients()
     .subscribe(products => {
       this.products = products;
     });

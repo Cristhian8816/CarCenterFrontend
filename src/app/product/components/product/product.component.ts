@@ -9,7 +9,7 @@ import { Component,
     OnDestroy
 } from '@angular/core';
 
-import { Patient} from '../../../core/services/models/patient.model';
+import { Client} from '../../../core/services/models/client.model';
 
 import { CartService } from './../../../core/services/cart.service';
 
@@ -20,7 +20,7 @@ import { CartService } from './../../../core/services/cart.service';
 })
 export class PatientComponent implements DoCheck, OnInit, OnDestroy {
 
-    @Input() product: Patient;
+    @Input() product: Client;
     @Output() productClicked: EventEmitter<any> = new EventEmitter();
 
     today = new Date();

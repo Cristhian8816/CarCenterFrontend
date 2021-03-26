@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PatientsService } from '../../../core/services/patients/patients.service';
+import { ClientsService } from '../../../core/services/patients/clients.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +13,7 @@ export class PatientListComponent implements OnInit {
   displayedColumns: string[] = ['Clients_key','FullName','DocumentType','ID','Cellphone','Address','email', 'actions'];
 
   constructor(
-    private patientServices: PatientsService
+    private clientServices: ClientsService
   ) { }
 
   ngOnInit(): void {
@@ -21,13 +21,13 @@ export class PatientListComponent implements OnInit {
   }
 
   fetchPatients() {
-    this.patientServices.getAllClients()
+    this.clientServices.getAllClients()
     .subscribe(clients => {
       this.clients = clients;
     });
   }
   deletepatient(id: string) {
-    this.patientServices.deletepatient(id)
+    this.clientServices.deleteClient(id)
     .subscribe(rta => {
       this.fetchPatients();
     });

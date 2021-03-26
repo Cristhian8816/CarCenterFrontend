@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { Patient } from '../../../core/services/models/patient.model';
+import { Client } from '../../../core/services/models/client.model';
 import { CartService } from '../../../core/services/cart.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { CartService } from '../../../core/services/cart.service';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  product$: Observable<Patient[]>;
+  product$: Observable<Client[]>;
 
   constructor(
     private cartService: CartService

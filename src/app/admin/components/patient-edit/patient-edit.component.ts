@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MyValidators  } from '../../../utils/validators';
 
-import { PatientsService } from '../../../core/services/patients/patients.service';
+import { ClientsService } from '../../../core/services/patients/clients.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -17,7 +17,7 @@ export class PatientEditComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private patientsService: PatientsService,
+    private clientsService: ClientsService,
     private router: Router,
     private activeRoute: ActivatedRoute
   ) {
@@ -27,7 +27,7 @@ export class PatientEditComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params: Params) => {
       this.id = params.id;
-      this.patientsService.getPatient(this.id)
+      this.clientsService.getClient(this.id)
       .subscribe(product => {
        this.form.patchValue(product);
       });
@@ -38,7 +38,7 @@ export class PatientEditComponent implements OnInit {
     event.preventDefault();
     if (this.form.valid) {
       const product = this.form.value;
-      this.patientsService.updatePatient(this.id, product)
+      this.clientsService.updateClient(this.id, product)
       .subscribe((newProduct) => {
       console.log(newProduct);
       this.router.navigate(['./admin/products']);
