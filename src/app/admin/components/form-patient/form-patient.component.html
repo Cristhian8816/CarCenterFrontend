@@ -1,30 +1,82 @@
-<form [formGroup]="form" (ngSubmit)="saveProduct($event)">
+<form [formGroup]="form" (ngSubmit)="saveInformation($event)">
     <mat-card>
         <mat-card-header>
-            <mat-card-title>Fill the next Form to Created a new Appointment for a Patient</mat-card-title>           
+            <mat-card-title>Fill the next Form to Created a new Maintenance for your car</mat-card-title>           
         </mat-card-header>
-        <mat-card-content>            
+        <mat-card-content>           
+            <div class="row">
+                <div class="col xs">
+                    <mat-form-field>
+                        <input  [(ngModel)]="FullName" placeholder="Full Name" formControlName="FullName" matInput >
+                    </mat-form-field>                    
+                </div>
+            </div>                       
             <div class="row">
                 <mat-form-field>
-                    <mat-label>Patients</mat-label>
-                    <mat-select [(ngModel)]="patientNameSelected" [formGroup]="patientsNames" multiple formControlName="PatientId" >                         
-                      <mat-option *ngFor="let patientName of patientsNames" [value]="patientName">{{patientName}}</mat-option>
+                    <mat-label>Identification Type</mat-label>
+                    <mat-select [(ngModel)]="identificationtype" [formGroup]="identificationtype" multiple formControlName="DocumentType" >                         
+                      <mat-option *ngFor="let identificationType of IdentificationsTypes" [value]="identificationType">{{identificationType}}</mat-option>
                     </mat-select>
                   </mat-form-field>                               
             </div>
-            <div class="row">               
-                <mat-form-field>
-                    <mat-label>Appointment Types</mat-label>
-                    <mat-select [(ngModel)]="appointmentTypeSelected" [formGroup]="apointmentsTypes" multiple formControlName="appointmentType">                                                                       
-                        <mat-option *ngFor="let appointmentType of apointmentsTypes" [value]="appointmentType">{{appointmentType}}</mat-option>
-                    </mat-select>
-                </mat-form-field>                                 
+            <div class="row">
+                <div class="col xs">
+                    <mat-form-field>
+                        <input  [(ngModel)]="ID" placeholder="Identification Number" formControlName="ID" matInput >
+                    </mat-form-field>
+                </div>
+            </div>   
+            <div class="row">
+                <div class="col xs">
+                    <mat-form-field>
+                        <input  [(ngModel)]="CellPhone" placeholder="Cell Phone Number" formControlName="Cellphone" matInput >
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col xs">
+                    <mat-form-field>
+                        <input  [(ngModel)]="Address" placeholder="Address" formControlName="Address" matInput >
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col xs">
+                    <mat-form-field>
+                        <input  [(ngModel)]="Email" placeholder="e-mail" formControlName="email" matInput >
+                    </mat-form-field>
+                </div>
+            </div>    
+            
+            <mat-card-header>
+                <mat-card-title>Car Information</mat-card-title>           
+            </mat-card-header>
+
+            <div class="row">
+                <div class="col xs">
+                    <mat-form-field>
+                        <input  [(ngModel)]="Marca" placeholder="Marca" formControlName="Marca" matInput >
+                    </mat-form-field>
+                </div>
+            </div>  
+            
+            <mat-card-header>
+                <mat-card-title>Maintenance Information</mat-card-title>           
+            </mat-card-header>        
+
+            <div class="row">
+                <div class="col xs">
+                    <mat-form-field>
+                        <textarea placeholder="Description" formControlName="description" matInput> </textarea>
+                        <input placeholder="Description" formControlName="description" matInput typo="text">
+                    </mat-form-field>
+                </div>
             </div>
 
             <div class="row">
                 <mat-form-field>
-                    <mat-label>Choose an Appointment date</mat-label>
-                    <input [(ngModel)]="appointmentDate" matInput [matDatepicker]="picker" formControlName="Date">
+                    <mat-label>Choose a Maintenance date</mat-label>
+                    <input [(ngModel)]="initialDate" matInput [matDatepicker]="picker" formControlName="initialDate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
