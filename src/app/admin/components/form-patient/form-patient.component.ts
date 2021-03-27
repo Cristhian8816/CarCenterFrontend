@@ -87,7 +87,7 @@ export class FormPatientComponent implements OnInit {
             console.log(maintenance);
             this.maintenancesService.createMaintenance(maintenance)
             .subscribe((car) => {
-              this.router.navigate(['./admin/products']);
+              this.router.navigate(['./admin/bills']);
             });
           });                             
         });                      
