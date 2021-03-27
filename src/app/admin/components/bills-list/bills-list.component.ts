@@ -26,6 +26,7 @@ export class BillConsultComponent implements OnInit {
   maintenanceDate: Date;
   state: boolean;
   renderice: boolean;
+  message: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,35 +37,39 @@ export class BillConsultComponent implements OnInit {
     this.buildForm()
    }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {  
+    this.renderice = false; 
   }
 
   consultBills(event: Event) {
-    if (this.form.valid) { 
+    if (this.form.valid) {      
       console.log('el bonton se activo');
       this.clientServices.getClient(this.client_key)
-      .subscribe((Client) => { 
-        this.FullName = Client.FullName;
-        this.identificationtype = Client.DocumentType;
-        this.CellPhone = Client.Cellphone;
-        this.Address = Client.Address;
-        this.ID = Client.ID;
-        this.Email = Client.email;
+      .subscribe((Client) => {           
+          console.log('entro al if');  
+          this.FullName = Client.FullName;
+          this.identificationtype = Client.DocumentType;
+          this.CellPhone = Client.Cellphone;
+          this.Address = Client.Address;
+          this.ID = Client.ID;
+          this.Email = Client.email;
 
-        this.carsService.getCar(Client.Clients_key)
-        .subscribe((car) => { 
-          this.Marca = car.Marca;
-          this.maintenancesService.getMaintenance(Client.Clients_key)
-          .subscribe((maintenance) => {
-            this.Description = maintenance.Description;
-            this.maintenanceDate = maintenance.initialDate;
-            this.state = maintenance.State;
+          this.carsService.getCar(Client.Clients_key)
+          .subscribe((car) => { 
+            this.Marca = car.Marca;
+            this.maintenancesService.getMaintenance(Client.Clients_key)
+            .subscribe((maintenance) => {
+              this.Description = maintenance.Description;
+              this.maintenanceDate = maintenance.initialDate;
+              this.state = maintenance.State;
 
-            this.renderice = true;
-          });
-        });
-      });
-    }
+              this.renderice = true;
+            });
+          });        
+      },(error) => {        
+        this.message = 'Usuario no encontrado'
+    });
+    }    
   }
 
   private buildForm() {
