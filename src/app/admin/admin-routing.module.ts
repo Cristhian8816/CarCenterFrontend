@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { TableComponent} from './components/table/table.component';
 import { DashboardComponent} from './components/dashboard/dashboard.component';
-import { PatientListComponent } from './components/patient-list/patient-list.component';
+import { BillConsultComponent } from './components/bills-list/bills-list.component';
 import { AppointmentListComponent } from './components/appointment-list/appointment-list.component';
 import { FormPatientComponent } from './components/form-patient/form-patient.component';
 import { PatientEditComponent } from './components/patient-edit/patient-edit.component';
@@ -23,8 +23,8 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'products',
-        component: PatientListComponent
+        path: 'bills',
+        component: BillConsultComponent
       },
       {
         path: 'appointments',

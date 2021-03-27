@@ -4,10 +4,10 @@ import { ClientsService } from '../../../core/services/clients/clients.service';
 
 @Component({
   selector: 'app-product-list',
-  templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.scss']
+  templateUrl: './bills-list.component.html',
+  styleUrls: ['./bills-list.component.scss']
 })
-export class PatientListComponent implements OnInit {
+export class BillConsultComponent implements OnInit {
 
   clients = [];
   displayedColumns: string[] = ['Clients_key','FullName','DocumentType','ID','Cellphone','Address','email', 'actions'];
@@ -17,10 +17,10 @@ export class PatientListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.fetchPatients();
+    this.fetchClients();
   }
 
-  fetchPatients() {
+  fetchClients() {
     this.clientServices.getAllClients()
     .subscribe(clients => {
       this.clients = clients;
@@ -29,7 +29,7 @@ export class PatientListComponent implements OnInit {
   deletepatient(id: string) {
     this.clientServices.deleteClient(id)
     .subscribe(rta => {
-      this.fetchPatients();
+      this.fetchClients();
     });
   }
 
