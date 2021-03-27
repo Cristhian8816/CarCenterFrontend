@@ -27,6 +27,7 @@ export class BillConsultComponent implements OnInit {
   state: boolean;
   renderice: boolean;
   message: string;
+  maintenanceState: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -62,6 +63,12 @@ export class BillConsultComponent implements OnInit {
               this.Description = maintenance.Description;
               this.maintenanceDate = maintenance.initialDate;
               this.state = maintenance.State;
+              if(this.state)
+              {
+                this.maintenanceState = 'Completado';
+              }else{
+                this.maintenanceState = 'En proceso';
+              }
 
               this.renderice = true;
             });
