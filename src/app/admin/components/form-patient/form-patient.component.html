@@ -47,11 +47,11 @@
                     </mat-form-field>
                 </div>
             </div>    
-            
-            <mat-card-header>
-                <mat-card-title>Car Information</mat-card-title>           
-            </mat-card-header>
-
+        </mat-card-content>    
+        <mat-card-header>
+            <mat-card-title>Car Information</mat-card-title>           
+        </mat-card-header>
+        <mat-card-content>
             <div class="row">
                 <div class="col xs">
                     <mat-form-field>
@@ -59,16 +59,16 @@
                     </mat-form-field>
                 </div>
             </div>  
-            
-            <mat-card-header>
-                <mat-card-title>Maintenance Information</mat-card-title>           
-            </mat-card-header>        
-
+        </mat-card-content>    
+        <mat-card-header>
+            <mat-card-title>Maintenance Information</mat-card-title>           
+        </mat-card-header>        
+        <mat-card-content>
             <div class="row">
                 <div class="col xs">
                     <mat-form-field>
-                        <textarea placeholder="Description" formControlName="description" matInput> </textarea>
-                        <input placeholder="Description" formControlName="description" matInput typo="text">
+                        <textarea placeholder="Description" formControlName="Description" matInput> </textarea>
+                        <input placeholder="Description" formControlName="Description" matInput typo="text">
                     </mat-form-field>
                 </div>
             </div>
@@ -76,7 +76,7 @@
             <div class="row">
                 <mat-form-field>
                     <mat-label>Choose a Maintenance date</mat-label>
-                    <input [(ngModel)]="initialDate" matInput [matDatepicker]="picker" formControlName="initialDate">
+                    <input [(ngModel)]="maintenanceDate" matInput [matDatepicker]="picker" formControlName="initialDate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>

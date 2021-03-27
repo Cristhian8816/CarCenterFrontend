@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MyValidators  } from '../../../utils/validators';
 
-import { ClientsService } from '../../../core/services/patients/clients.service';
+import { ClientsService } from '../../../core/services/clients/clients.service';
 
 @Component({
   selector: 'app-product-edit',

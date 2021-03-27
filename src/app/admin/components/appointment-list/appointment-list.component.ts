@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {formatDate} from '@angular/common';
 
-import { AppointmentsService } from '../../../core/services/appointments/appointments.service';
+import { CarsService } from '../../../core/services/cars/cars.service';
 
 @Component({
   selector: 'app-product-list',
@@ -17,7 +17,7 @@ export class AppointmentListComponent implements OnInit {
   displayedColumns: string[] = ['AppointmentId', 'PatientId', 'AppointmentType', 'Date', 'actions'];
 
   constructor(
-    private appointmentServices: AppointmentsService
+    private carsService: CarsService
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class AppointmentListComponent implements OnInit {
   }
 
   fetchAppointments() {
-    this.appointmentServices.getAllAppointments()
+    this.carsService.getAllCars()
     .subscribe(appointments => {
       this.isDisabled = this.calculateCancelAppointment(appointments);
       this.appointments = appointments;
@@ -47,7 +47,7 @@ export class AppointmentListComponent implements OnInit {
   }
 
   deleteAppointment(id: string) {
-    this.appointmentServices.deleteAppointment(id)
+    this.carsService.deleteCar(id)
     .subscribe(rta => {
       this.fetchAppointments();
     });

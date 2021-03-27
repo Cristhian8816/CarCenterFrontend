@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ClientsService } from './services/patients/clients.service';
-import { AppointmentsService } from './services/appointments/appointments.service';
+import { ClientsService } from './services/clients/clients.service';
+import { CarsService } from './services/cars/cars.service';
 
 @NgModule({
   declarations: [],
@@ -11,7 +11,7 @@ import { AppointmentsService } from './services/appointments/appointments.servic
   ],
   providers: [
     ClientsService,
-    AppointmentsService
+    CarsService
   ]
 })
 export class CoreModule { }

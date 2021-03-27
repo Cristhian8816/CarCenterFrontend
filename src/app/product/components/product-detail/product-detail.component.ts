@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 
-import {ClientsService} from '../../../core/services/patients/clients.service';
+import {ClientsService} from '../../../core/services/clients/clients.service';
 import {Client} from '../../../core/services/models/client.model';
 
 @Component({

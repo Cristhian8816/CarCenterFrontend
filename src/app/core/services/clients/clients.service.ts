@@ -13,18 +13,16 @@ export class ClientsService {
     private http: HttpClient
   ) { }
 
-  getAllClients() {
-    // return this.products;
+  getAllClients() {   
     return this.http.get<Client[]>(`${environment.url_api}/clients`);
   }
 
-  getClient(id: string) {
-    // return this.products.find(item => id === item.id);
+  getClient(id: string) {  
     return this.http.get<Client>(`${environment.url_api}/clients/${id}`);
   }
 
-  createClient( patient: Client) {
-    return this.http.post(`${environment.url_api}/clients`, patient);
+  createClient( client: Client) {
+    return this.http.post(`${environment.url_api}/clients`, client);
   }
 
   updateClient( id: string, changes: Partial<Client>) {

@@ -7,12 +7,12 @@ import {MatCalendar} from '@angular/material/datepicker';
 import {DateAdapter, MAT_DATE_FORMATS, MatDateFormats} from '@angular/material/core';
 
 import { finalize } from 'rxjs/operators';
-import { Appointment } from '../../../core/services/models/appointment.model';
 
 import { MyValidators  } from '../../../utils/validators';
 
-import { ClientsService } from '../../../core/services/patients/clients.service';
-import { AppointmentsService } from '../../../core/services/appointments/appointments.service';
+import { ClientsService } from '../../../core/services/clients/clients.service';
+import { CarsService } from '../../../core/services/cars/cars.service';
+import { MaintenancesService } from '../../../core/services/maintenances/maintenances.service';
 import { Observable } from 'rxjs';
 import { IfStmt } from '@angular/compiler';
 
@@ -30,13 +30,15 @@ export class FormPatientComponent implements OnInit {
   CellPhone: string;
   Address: string;
   Email: string;
-  Marca;
-  Description;
-  initialDate: Date;
+  Marca: string;
+  Description: string;
+  maintenanceDate: Date;
   
   constructor(
     private formBuilder: FormBuilder,
-    private clientsService: ClientsService,  
+    private clientsService: ClientsService, 
+    private maintenancesService: MaintenancesService,
+    private carsService: CarsService, 
     private router: Router,
     private storage: AngularFireStorage,
   ) {
@@ -46,7 +48,7 @@ export class FormPatientComponent implements OnInit {
   ngOnInit(): void {
 
    }
-   
+
    saveInformation(event: Event) {
     event.preventDefault();
     if (this.form.valid) {             
@@ -60,11 +62,36 @@ export class FormPatientComponent implements OnInit {
         'Address': this.Address,
         'email': this.Email,
       }  
-                     
+
       this.clientsService.createClient(client)
-      .subscribe((newClient) => {
-      this.router.navigate(['./admin']);
-      });      
+      .subscribe((NewClient) => {         
+        this.clientsService.getClient(this.ID)
+        .subscribe((client) => {       
+          // Post to Cars
+          const car = { 
+            'Clients_key' : client.Clients_key,
+            'Marca' : this.Marca,       
+          }
+          console.log(car);
+          this.carsService.createCar(car)
+          .subscribe((car) => {
+              // Post to Maintenance
+              const maintenance = { 
+              'Maintenance_key' : '',
+              'Clients_key' : client.Clients_key,
+              'Description' : this.Description,  
+              'initialDate' : this.maintenanceDate,
+              'endDate' :  this.maintenanceDate,
+              'State' : false   
+            }
+            console.log(maintenance);
+            this.maintenancesService.createMaintenance(maintenance)
+            .subscribe((car) => {
+              this.router.navigate(['./admin/products']);
+            });
+          });                             
+        });                      
+      });                                    
     }   
   }
   
@@ -76,7 +103,10 @@ export class FormPatientComponent implements OnInit {
      ID: ['', [Validators.required]],
      Cellphone: ['', [Validators.required]],
      Address: ['', [Validators.required]],
-     email: ['', [Validators.required]],
+     email: ['', [Validators.required]], 
+     Marca: ['', [Validators.required]],    
+     Description: ['', [Validators.required]],
+     initialDate: ['', [Validators.required]],
     });
   } 
   
