@@ -24,46 +24,53 @@ export class BillConsultComponent implements OnInit {
   Marca: string;
   Description: string;
   maintenanceDate: Date;
-
-
-  displayedColumns: string[] = ['Clients_key','FullName','DocumentType','ID','Cellphone','Address','email', 'actions'];
+  state: boolean;
+  renderice: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private clientServices: ClientsService,
     private carsService: CarsService,
     private maintenancesService  : MaintenancesService,   
-  ) { }
+  ) {
+    this.buildForm()
+   }
 
-  ngOnInit(): void {
-    this.fetchClients();
+  ngOnInit(): void {   
   }
 
   consultBills(event: Event) {
-    this.clientServices.getClient(this.client_key)
-    .subscribe((Client) => { 
-      this.FullName = Client.FullName;
-      this.identificationtype = Client.DocumentType;
-      this.CellPhone = Client.Cellphone;
-      this.carsService.getCar(Client.Clients_key)
-      .subscribe((car) => { 
-        this.maintenancesService.getMaintenance(Client.Clients_key);
+    if (this.form.valid) { 
+      console.log('el bonton se activo');
+      this.clientServices.getClient(this.client_key)
+      .subscribe((Client) => { 
+        this.FullName = Client.FullName;
+        this.identificationtype = Client.DocumentType;
+        this.CellPhone = Client.Cellphone;
+        this.Address = Client.Address;
+        this.ID = Client.ID;
+        this.Email = Client.email;
 
+        this.carsService.getCar(Client.Clients_key)
+        .subscribe((car) => { 
+          this.Marca = car.Marca;
+          this.maintenancesService.getMaintenance(Client.Clients_key)
+          .subscribe((maintenance) => {
+            this.Description = maintenance.Description;
+            this.maintenanceDate = maintenance.initialDate;
+            this.state = maintenance.State;
+
+            this.renderice = true;
+          });
+        });
       });
-    });
+    }
   }
 
-  fetchClients() {
-    this.clientServices.getAllClients()
-    .subscribe(clients => {
-      this.clients = clients;
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      client_key: ['', [Validators.required]],    
     });
-  }
-  deletepatient(id: string) {
-    this.clientServices.deleteClient(id)
-    .subscribe(rta => {
-      this.fetchClients();
-    });
-  }
+  } 
 
 }
